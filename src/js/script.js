@@ -50,7 +50,7 @@ new Swiper ('.swiper', {
     },
     breakpoints: {
         320: {
-            slidesPerView: 0.95,
+            slidesPerView: 1.2,
         },
         410: {
             slidesPerView: 1.95,

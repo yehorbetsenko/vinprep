@@ -359,25 +359,15 @@ body {
 .title {   
     display: flex;
     text-transform: uppercase;
-    @include adaptive-value("font-size", 64, 61, 1);
+    @include adaptive-value("font-size", 64, 60, 1);
     font-weight: 700;
+    justify-content: center;
+    text-align: center;
     p {
         background: $gr-title;
         background-clip: text;
         -webkit-text-fill-color: transparent;
     }
-}
-
-.sub-title {
-    position: absolute;
-    margin-left: 225px;
-    margin-top: -25px;
-    @include adaptive-value("font-size", 36, 32, 1);
-    font-weight: 700;
-}
-
-[class*='block-title'] {
-    margin-bottom: 100px;
     &::after {
         content: '';
         display: block;
@@ -388,15 +378,57 @@ body {
         left: 0;
         bottom: 0;
         background: $gr-title;
+        margin-top: 90px;
+        margin-left: -127px;
     }
 }
 
-// ====================================================
+.sub-title {
+    position: relative;
+    @include adaptive-value("font-size", 36, 32, 1);
+    font-weight: 700;
+    text-align: center;
+}
 
-// schedule
+[class*='block-text'] {
+    display: flex;
+    justify-content: center;
+}
+    
+    @media (max-width: 991.98px) {
+    }
+    
+    // ====================================================
+    
+    // schedule
+    
+    .schedule {
+        margin-bottom: 100px;
+        &__block-title {
+            margin-bottom: 100px;
+        &::after {
+            content: '';
+            display: block;
+            position: relative;
+            margin: 0 30px;
+            width: 180px;
+            height: 2px;
+            left: 0;
+            bottom: 0;
+            background: $gr-title;
+        }
 
-.schedule {
-    margin-bottom: 100px;
+    }
+    &__sub-title {
+        position: absolute;
+        margin-top: -25px;
+        margin-left: 225px;
+    }
+    &__title {
+        &::after {
+            display: none;
+        }
+    }
     &__container {
         padding: 0 5px;
     }
@@ -591,6 +623,12 @@ body {
 }
 
 @media (max-width: 991.98px) {
+    .schedule {
+        &__block-text {
+            display: flex;
+            justify-content: center;
+        }
+    }
     .card-block {
         &1 {
             position: absolute;
@@ -637,20 +675,16 @@ body {
 
 .faq {
     &__block-title {
+        margin-bottom: 30px;
+    }
+    &__title { 
         &::after {
-            margin: 0;
             width: 130px;
         }
-    }
-    &__sub-title {
-        margin-left: 150px;
     }
     &__container {
         display: block;
         padding: 0 80px;
-    }
-    &__accordions {
-        margin-top: -30px;
     }
     &__accordion {
         margin-bottom: 15px;
@@ -738,17 +772,9 @@ body {
 @media (max-width: 991.98px) {
     .faq {
         margin-top: 1300px;
-    }
-}
-
-@media (max-width: 670px) {
-    .faq {
-        &__sub-title {
-            margin-left: 0;
-            margin-top: 10px;
-        }
-        &__accordions {
-            margin-top: 100px;
+        &__block-title {
+            display: flex;
+            flex-direction: column;
         }
     }
 }
@@ -764,14 +790,6 @@ body {
     }
 }
 
-@media (max-width: 480px) {
-    .faq {
-        &__accordions {
-            margin-top: 130px;
-        }
-    }
-}
-
 // ===============================================
 
 // panelists
@@ -779,19 +797,15 @@ body {
 .panelists {
     @include adaptive-value('margin-top', 0, -100, 1);
     &__block-title {
-        &::after {
-            margin: 0;
-            width: 130px;
-        }
-    }
-    &__sub-title {
-        margin-left: 150px;
-    }
-    &__block-title {
-        margin: 200px 60px 50px 20px;
+        margin-top: 200px;
+        margin-bottom: 50px;
     }
     &__title {
-        @include adaptive-value("font-size", 64, 58, 1);
+        @include adaptive-value("font-size", 64, 56, 1);
+        &::after {
+            @include adaptive-value("width", 330, 290, 1);
+            @include adaptive-value("margin-left", -330, -290, 1);
+        }
     }
     &__swiper {
         margin: 0 20px;
@@ -829,29 +843,6 @@ body {
         &__container {
             padding: 0 10px;
         }
-        &__block-title {
-            margin: 200px 0px 50px 0px;        
-        }
-    }
-}
-
-@media (max-width: 600px) {
-    .panelists {
-        &__block-title {
-            margin: 200px 0px 80px 0px;        
-        }
-        &__sub-title {
-            margin-left: 0;
-            margin-top: 10px;
-        }
-    }
-}
-
-@media (max-width: 340px) {
-    .panelists {
-        &__block-title {
-            margin: 200px 0px 130px 0px;        
-        }
     }
 }
 
@@ -862,20 +853,18 @@ body {
 .sponsors {
     @include adaptive-value('margin-top', 200, 100, 1);
     &__title {
-        @include adaptive-value("font-size", 64, 56, 1);
-
-    }
-    &__block-title {
+        @include adaptive-value("font-size", 64, 54, 1);
+        line-height: 1.2;
         &::after {
             margin: 0;
-            width: 130px;
+            @include adaptive-value('width', 490, 420, 1);
+            @include adaptive-value('margin-left', -490, -420, 1);
+            margin-top: 90px;
         }
-    }
-    &__sub-title {
-        margin-left: 150px;
     }
     &__card {
         &-title {
+            margin-top: 50px;
             text-transform: uppercase;
             font-size: 32px;
             font-weight: 600;
@@ -923,11 +912,13 @@ body {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 452px) {
     .sponsors {
-        &__sub-title {
-            margin-left: 0;
-            margin-top: 10px;
+        &__title {
+            &::after {
+                margin-top: 150px;
+                margin-left: -300px;
+            }
         }
     }
 }
@@ -938,20 +929,18 @@ body {
 
 .prizes {
     @include adaptive-value('margin-top', 200, 100, 1);
-    &__block-title {
+    &__title {
         &::after {
-            margin: 0;
-            width: 130px;
+            @include adaptive-value('width', 210, 200, 1);
+            @include adaptive-value('margin-left', -210, -200, 1);
         }
-    }
-    &__sub-title {
-        margin-left: 150px;
     }
     &__img {
         width: 65px;
         height: 72px;
     }
     &__cards {
+        margin-top: 50px;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
@@ -991,32 +980,20 @@ body {
     }
 }
 
-@media (max-width: 670px) {
-    .prizes {
-        &__sub-title {
-            margin-left: 0;
-            margin-top: 10px;
-        }
-    }
-}
-
 // ========================================================
 
 // webinar
 
 .webinar {
     margin-top: 100px;
-    &__block-title {
+    &__title {
         &::after {
-            margin: 0;
-            width: 130px;
+            @include adaptive-value('width', 300, 260, 1);
+            @include adaptive-value('margin-left', -300, -260, 1);
         }
     }
-    &__sub-title {
-        margin-left: 150px;
-    }
     &__resume {
-        margin-top: -30px;
+        margin-top: 50px;
         display: flex;
         max-width: 1170px;
         min-height: 370px;
@@ -1036,6 +1013,9 @@ body {
         }
         &-title {
             @include adaptive-value("font-size", 48, 44, 1);
+            &::after {
+                display: none;
+            }
         }
         &-name {
             margin-left: 20px;
@@ -1047,6 +1027,7 @@ body {
         }
         &-second {
             display: block;
+            padding-bottom: 20px;
         }
         &-instagram {
             display: flex;
@@ -1086,6 +1067,9 @@ body {
         }
         &-title {
             @include adaptive-value("font-size", 48, 36, 1);
+            &::after {
+                display: none;
+            }
         }
         &-sub-title {
             margin: 0;
@@ -1196,23 +1180,6 @@ body {
                 flex-direction: column;
                 align-items: center;
             }
-        }
-    }
-}
-
-@media (max-width: 600px) {
-    .webinar {
-        &__sub-title {
-            margin-left: 0;
-            margin-top: 10px;
-        }
-    }
-}
-
-@media (max-width:390px) {
-    .webinar {
-        &__resume {
-            margin-top: 120px;
         }
     }
 }

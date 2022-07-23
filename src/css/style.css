@@ -450,10 +450,14 @@ body._lock {
   text-transform: uppercase;
   font-size: 64px;
   font-weight: 700;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
 }
 @media (max-width: 1170px) {
   .title {
-    font-size: calc(61px + 3 * ((100vw - 320px) / 850));
+    font-size: calc(60px + 4 * ((100vw - 320px) / 850));
   }
 }
 .title p {
@@ -462,13 +466,25 @@ body._lock {
           background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.title::after {
+  content: "";
+  display: block;
+  position: relative;
+  margin: 0 30px;
+  width: 180px;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(89.98deg, #C385F1 0.99%, #7A91D6 97.59%);
+  margin-top: 90px;
+  margin-left: -127px;
+}
 
 .sub-title {
-  position: absolute;
-  margin-left: 225px;
-  margin-top: -25px;
+  position: relative;
   font-size: 36px;
   font-weight: 700;
+  text-align: center;
 }
 @media (max-width: 1170px) {
   .sub-title {
@@ -476,10 +492,22 @@ body._lock {
   }
 }
 
-[class*=block-title] {
+[class*=block-text] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.schedule {
   margin-bottom: 100px;
 }
-[class*=block-title]::after {
+.schedule__block-title {
+  margin-bottom: 100px;
+}
+.schedule__block-title::after {
   content: "";
   display: block;
   position: relative;
@@ -490,9 +518,13 @@ body._lock {
   bottom: 0;
   background: linear-gradient(89.98deg, #C385F1 0.99%, #7A91D6 97.59%);
 }
-
-.schedule {
-  margin-bottom: 100px;
+.schedule__sub-title {
+  position: absolute;
+  margin-top: -25px;
+  margin-left: 225px;
+}
+.schedule__title::after {
+  display: none;
 }
 .schedule__container {
   padding: 0 5px;
@@ -783,6 +815,15 @@ body._lock {
 }
 
 @media (max-width: 991.98px) {
+  .schedule__block-text {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
   .card-block1 {
     position: absolute;
     margin: 15px auto;
@@ -819,19 +860,15 @@ body._lock {
     left: calc(10px + 840 * ((100vw - 320px) / 2240));
   }
 }
-.faq__block-title::after {
-  margin: 0;
-  width: 130px;
+.faq__block-title {
+  margin-bottom: 30px;
 }
-.faq__sub-title {
-  margin-left: 150px;
+.faq__title::after {
+  width: 130px;
 }
 .faq__container {
   display: block;
   padding: 0 80px;
-}
-.faq__accordions {
-  margin-top: -30px;
 }
 .faq__accordion {
   margin-bottom: 15px;
@@ -921,14 +958,14 @@ body._lock {
   .faq {
     margin-top: 1300px;
   }
-}
-@media (max-width: 670px) {
-  .faq__sub-title {
-    margin-left: 0;
-    margin-top: 10px;
-  }
-  .faq__accordions {
-    margin-top: 100px;
+  .faq__block-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 @media (max-width: 550px) {
@@ -942,11 +979,6 @@ body._lock {
     margin-left: calc(10px + 140 * ((100vw - 320px) / 850));
   }
 }
-@media (max-width: 480px) {
-  .faq__accordions {
-    margin-top: 130px;
-  }
-}
 .panelists {
   margin-top: 0px;
 }
@@ -955,22 +987,30 @@ body._lock {
     margin-top: calc(-100px + 100 * ((100vw - 320px) / 850));
   }
 }
-.panelists__block-title::after {
-  margin: 0;
-  width: 130px;
-}
-.panelists__sub-title {
-  margin-left: 150px;
-}
 .panelists__block-title {
-  margin: 200px 60px 50px 20px;
+  margin-top: 200px;
+  margin-bottom: 50px;
 }
 .panelists__title {
   font-size: 64px;
 }
 @media (max-width: 1170px) {
   .panelists__title {
-    font-size: calc(58px + 6 * ((100vw - 320px) / 850));
+    font-size: calc(56px + 8 * ((100vw - 320px) / 850));
+  }
+}
+.panelists__title::after {
+  width: 330px;
+  margin-left: -330px;
+}
+@media (max-width: 1170px) {
+  .panelists__title::after {
+    width: calc(290px + 40 * ((100vw - 320px) / 850));
+  }
+}
+@media (max-width: 1170px) {
+  .panelists__title::after {
+    margin-left: calc(-290px + -40 * ((100vw - 320px) / 850));
   }
 }
 .panelists__swiper {
@@ -1005,23 +1045,6 @@ body._lock {
   .panelists__container {
     padding: 0 10px;
   }
-  .panelists__block-title {
-    margin: 200px 0px 50px 0px;
-  }
-}
-@media (max-width: 600px) {
-  .panelists__block-title {
-    margin: 200px 0px 80px 0px;
-  }
-  .panelists__sub-title {
-    margin-left: 0;
-    margin-top: 10px;
-  }
-}
-@media (max-width: 340px) {
-  .panelists__block-title {
-    margin: 200px 0px 130px 0px;
-  }
 }
 .sponsors {
   margin-top: 200px;
@@ -1033,20 +1056,31 @@ body._lock {
 }
 .sponsors__title {
   font-size: 64px;
+  line-height: 1.2;
 }
 @media (max-width: 1170px) {
   .sponsors__title {
-    font-size: calc(56px + 8 * ((100vw - 320px) / 850));
+    font-size: calc(54px + 10 * ((100vw - 320px) / 850));
   }
 }
-.sponsors__block-title::after {
+.sponsors__title::after {
   margin: 0;
-  width: 130px;
+  width: 490px;
+  margin-left: -490px;
+  margin-top: 90px;
 }
-.sponsors__sub-title {
-  margin-left: 150px;
+@media (max-width: 1170px) {
+  .sponsors__title::after {
+    width: calc(420px + 70 * ((100vw - 320px) / 850));
+  }
+}
+@media (max-width: 1170px) {
+  .sponsors__title::after {
+    margin-left: calc(-420px + -70 * ((100vw - 320px) / 850));
+  }
 }
 .sponsors__card-title {
+  margin-top: 50px;
   text-transform: uppercase;
   font-size: 32px;
   font-weight: 600;
@@ -1097,10 +1131,10 @@ body._lock {
     display: none;
   }
 }
-@media (max-width: 600px) {
-  .sponsors__sub-title {
-    margin-left: 0;
-    margin-top: 10px;
+@media (max-width: 452px) {
+  .sponsors__title::after {
+    margin-top: 150px;
+    margin-left: -300px;
   }
 }
 .prizes {
@@ -1111,18 +1145,26 @@ body._lock {
     margin-top: calc(100px + 100 * ((100vw - 320px) / 850));
   }
 }
-.prizes__block-title::after {
-  margin: 0;
-  width: 130px;
+.prizes__title::after {
+  width: 210px;
+  margin-left: -210px;
 }
-.prizes__sub-title {
-  margin-left: 150px;
+@media (max-width: 1170px) {
+  .prizes__title::after {
+    width: calc(200px + 10 * ((100vw - 320px) / 850));
+  }
+}
+@media (max-width: 1170px) {
+  .prizes__title::after {
+    margin-left: calc(-200px + -10 * ((100vw - 320px) / 850));
+  }
 }
 .prizes__img {
   width: 65px;
   height: 72px;
 }
 .prizes__cards {
+  margin-top: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1177,24 +1219,25 @@ body._lock {
   font-weight: 300;
 }
 
-@media (max-width: 670px) {
-  .prizes__sub-title {
-    margin-left: 0;
-    margin-top: 10px;
-  }
-}
 .webinar {
   margin-top: 100px;
 }
-.webinar__block-title::after {
-  margin: 0;
-  width: 130px;
+.webinar__title::after {
+  width: 300px;
+  margin-left: -300px;
 }
-.webinar__sub-title {
-  margin-left: 150px;
+@media (max-width: 1170px) {
+  .webinar__title::after {
+    width: calc(260px + 40 * ((100vw - 320px) / 850));
+  }
+}
+@media (max-width: 1170px) {
+  .webinar__title::after {
+    margin-left: calc(-260px + -40 * ((100vw - 320px) / 850));
+  }
 }
 .webinar__resume {
-  margin-top: -30px;
+  margin-top: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1227,6 +1270,9 @@ body._lock {
     font-size: calc(44px + 4 * ((100vw - 320px) / 850));
   }
 }
+.webinar__resume-title::after {
+  display: none;
+}
 .webinar__resume-name {
   margin-left: 20px;
   font-size: 30px;
@@ -1245,6 +1291,7 @@ body._lock {
 }
 .webinar__resume-second {
   display: block;
+  padding-bottom: 20px;
 }
 .webinar__resume-instagram {
   display: -webkit-box;
@@ -1317,6 +1364,9 @@ body._lock {
   .webinar__ment-title {
     font-size: calc(36px + 12 * ((100vw - 320px) / 850));
   }
+}
+.webinar__ment-title::after {
+  display: none;
 }
 .webinar__ment-sub-title {
   margin: 0;
@@ -1481,17 +1531,6 @@ body._lock {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-  }
-}
-@media (max-width: 600px) {
-  .webinar__sub-title {
-    margin-left: 0;
-    margin-top: 10px;
-  }
-}
-@media (max-width: 390px) {
-  .webinar__resume {
-    margin-top: 120px;
   }
 }
 @media (max-width: 340px) {
